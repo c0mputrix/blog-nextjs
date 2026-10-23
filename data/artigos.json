@@ -1,0 +1,37 @@
+[
+  {
+    "titulo": "Server Components: o novo padrão do Next.js",
+    "autor": "Leonardo Domingues",
+    "dataPublicacao": "2026-10-01",
+    "resumo": "Entenda por que as páginas do App Router são Server Components por padrão e como isso muda a forma de buscar dados.",
+    "conteudo": "No App Router do Next.js, todo componente dentro da pasta app é um Server Component por padrão. Isso significa que ele é executado no servidor, e o navegador recebe apenas o HTML pronto, sem o JavaScript necessário para montá-lo.\n\nA consequência mais visível é na busca de dados. Em vez de usar useEffect e useState para carregar informações depois que a página aparece, o próprio componente pode ser uma função async e usar await fetch diretamente. O usuário recebe a página já preenchida.\n\nAlém de simplificar o código, esse modelo reduz o tamanho do JavaScript enviado ao navegador e melhora a indexação, porque os robôs de busca encontram o conteúdo completo logo na primeira resposta."
+  },
+  {
+    "titulo": "SSG ou SSR: qual estratégia de renderização escolher",
+    "autor": "Leonardo Domingues",
+    "dataPublicacao": "2026-10-05",
+    "resumo": "Comparação prática entre geração estática e renderização no servidor, e quando usar generateStaticParams, force-static ou force-dynamic.",
+    "conteudo": "A geração estática (SSG) cria o HTML das páginas no momento do build. Depois disso, cada visita apenas entrega um arquivo pronto, o que torna o site extremamente rápido e barato de hospedar. No Next.js, generateStaticParams informa quais rotas dinâmicas devem ser geradas, e a opção dynamic = 'force-static' garante que a página seja tratada como estática.\n\nA renderização no servidor (SSR), ativada com dynamic = 'force-dynamic', gera o HTML a cada requisição. É a escolha certa quando o conteúdo muda o tempo todo ou depende de quem está acessando, como um painel com dados do usuário logado.\n\nPara um blog, em que os artigos mudam pouco, SSG costuma ser a melhor opção: as páginas ficam prontas antecipadamente e continuam no ar mesmo que a fonte de dados fique indisponível depois do build."
+  },
+  {
+    "titulo": "Rotas dinâmicas com slug no App Router",
+    "autor": "Leonardo Domingues",
+    "dataPublicacao": "2026-10-10",
+    "resumo": "Como criar URLs amigáveis para cada artigo usando a pasta [slug] e a biblioteca slugify.",
+    "conteudo": "No App Router, uma pasta com o nome entre colchetes, como [slug], vira um segmento dinâmico da URL. O arquivo app/artigos/[slug]/page.tsx atende a qualquer endereço no formato /artigos/alguma-coisa, e o valor do segmento chega à página pela propriedade params.\n\nO slug é a versão do título preparada para URLs: tudo em minúsculas, sem acentos e com hífens no lugar dos espaços. A biblioteca slugify faz essa conversão de forma consistente, transformando 'Introdução ao Next.js' em 'introducao-ao-next.js' ou, com a opção strict, em 'introducao-ao-nextjs'.\n\nURLs legíveis ajudam o usuário a entender onde está e também contam pontos para o SEO, já que as palavras do título aparecem no próprio endereço."
+  },
+  {
+    "titulo": "SEO dinâmico com generateMetadata",
+    "autor": "Leonardo Domingues",
+    "dataPublicacao": "2026-10-15",
+    "resumo": "Gerando title e description únicos para cada artigo e por que isso importa para os mecanismos de busca.",
+    "conteudo": "Cada página de um site deveria ter um título e uma descrição próprios. São esses textos que aparecem na aba do navegador, nos resultados do Google e nas prévias quando o link é compartilhado em redes sociais.\n\nNo App Router, uma rota pode exportar a função assíncrona generateMetadata. Ela recebe os mesmos params da página, busca os dados do artigo e devolve um objeto com title, description e, se quiser, informações de Open Graph.\n\nComo o Next.js deduplica requisições iguais durante a renderização, buscar o mesmo artigo em generateMetadata e na página não gera chamadas duplicadas à API."
+  },
+  {
+    "titulo": "Publicando um projeto Next.js na Vercel",
+    "autor": "Leonardo Domingues",
+    "dataPublicacao": "2026-10-20",
+    "resumo": "O caminho do repositório no GitHub até a aplicação em produção, com deploy automático a cada push.",
+    "conteudo": "A Vercel é a plataforma criada pela mesma equipe do Next.js, e por isso reconhece o framework automaticamente. Basta importar o repositório do GitHub, confirmar as configurações sugeridas e clicar em Deploy.\n\nDurante o deploy, a Vercel executa npm install e npm run build. As páginas estáticas geradas no build são distribuídas por uma rede de servidores no mundo todo, o que deixa o carregamento rápido para qualquer visitante.\n\nDepois da primeira publicação, cada novo push para a branch principal dispara um novo deploy automaticamente. Assim, atualizar o site é tão simples quanto fazer um commit."
+  }
+]
