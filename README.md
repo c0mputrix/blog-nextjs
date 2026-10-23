@@ -2,8 +2,8 @@
 
 Blog construído com o **App Router do Next.js**, em que a página inicial lista os artigos e cada artigo tem sua própria rota dinâmica identificada por um slug.
 
-- **Aplicação em produção:** _cole aqui o link da Vercel_
-- **Repositório:** _cole aqui o link do GitHub_
+- **Aplicação em produção:** https://blog-nextjs-five-cyan.vercel.app
+- **Repositório:** https://github.com/SEU-USUARIO/blog-nextjs
 
 ## Tecnologias
 
